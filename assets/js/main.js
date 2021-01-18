@@ -152,7 +152,7 @@ console.log('This is the multiply number ' + multiplyNumber);
 // It should then delete the biggest number in the array, and console log the result (array).
 
 var numbers = [15, 35, 46, 23, 15, 17, 23, 24, 35, 12, 72, 64, 35, 22, 64];
-var filteredArray = removeDuplicates(numbers , biggestNumber);
+var filteredArray = removeDuplicates(numbers , biggestNumberTask);
 
 function removeDuplicates(array, removeBiggestNumber) {
     const result = [];
@@ -171,7 +171,7 @@ function removeDuplicates(array, removeBiggestNumber) {
     return removeBiggestNumber(result);
 }
 
-function biggestNumber(array) {
+function biggestNumberTask(array) {
     var maxValue = 0;
     var newArray = [];
     for (var i = 0; i < array.length; i++) {
