@@ -42,31 +42,25 @@ console.log('This is longest name ' + name);
 
 // TASK 4
 // Create a function that should receive an array of numbers, find the second lowest and second greatest number, and console log result
-var numbers = [3, 2, 1, 5, 4, 6];
+var numbers = [1, 2, 3, 4, 5, 1];
 var preferedNumbers = secondLargestAndSecondSmallestNumber(numbers);
 
 function secondSmallestNumber(array) {
-    var secondMin;
+    var smallest = array[0];
     for (var i = 0; i < array.length; i++) {
-        for (var j = i + 1; j < array.length; j++) {
-            if (array[i] > array[j]) {
-                secondMin = array[i];
-                array[i] = array[j];
-                array[j] = secondMin;
-            }
+        if (array[i] < smallest) {
+            smallest = array[i];
         }
     }
-    return array[1];
+    return smallest;
 }
 
 function secondBiggestNumber(array) {
     var max = 0, secondMax = 0;
-    for (let i = 0; i < array.length; i++) {
+    for (var i = 0; i < array.length; i++) {
         if (array[i] >= max) {
             secondMax = max;
             max = array[i];
-        } else if (array[i] > secondMax) {
-            secondMax = array[i];
         }
     }
     return secondMax;
@@ -79,7 +73,7 @@ function secondLargestAndSecondSmallestNumber(array) {
     return newArray;
 }
 
-console.log('These are the numbers ' + preferedNumbers);
+console.log('These are the numbers 111 ' + preferedNumbers);
 
 // TASK 5
 // Create two functions. First one should receive two parameters, an array of numbers, and a single number.
@@ -115,7 +109,7 @@ console.log('These are the numbers ' + preferedNumbers + ' that are bigger from 
 // Then it should console log the result.
 
 var numbers = [3, 5, 4, 6, 7, 101];
-var multiplyNumber = multiplyLowestAndSmallestNumber(numbers);
+var multiplyNumber = multiplyLowestAndSmallestNumber(numbers, biggestNumber, lowestNumber);
 
 function lowestNumber(array) {
     var minvalue = array[0];
@@ -128,7 +122,7 @@ function lowestNumber(array) {
 }
 
 function biggestNumber(array) {
-    var maxValue = 0;
+    var maxValue = array[0];
     for (var i = 0; i < array.length; i++) {
         if (array[i] > maxValue) {
             maxValue = array[i];
@@ -137,8 +131,9 @@ function biggestNumber(array) {
     return maxValue;
 }
 
-function multiplyLowestAndSmallestNumber(array) {
-    return lowestNumber(array) * biggestNumber(array);
+function multiplyLowestAndSmallestNumber(array, biggestNumberFnc, lowestNumberFnc) {
+
+    return biggestNumberFnc(array) * lowestNumberFnc(array);
 }
 
 console.log('This is the multiply number ' + multiplyNumber);
@@ -152,7 +147,7 @@ console.log('This is the multiply number ' + multiplyNumber);
 // It should then delete the biggest number in the array, and console log the result (array).
 
 var numbers = [15, 35, 46, 23, 15, 17, 23, 24, 35, 12, 72, 64, 35, 22, 64];
-var filteredArray = removeDuplicates(numbers , biggestNumberTask);
+var filteredArray = removeDuplicates(numbers, biggestNumberTask);
 
 function removeDuplicates(array, removeBiggestNumber) {
     const result = [];
@@ -175,7 +170,7 @@ function biggestNumberTask(array) {
     var maxValue = 0;
     var newArray = [];
     for (var i = 0; i < array.length; i++) {
-        (array[i] > maxValue) ? maxValue = array[i] :  newArray[newArray.length] = array[i];
+        (array[i] > maxValue) ? maxValue = array[i] : newArray[newArray.length] = array[i];
     }
     return newArray;
 }
